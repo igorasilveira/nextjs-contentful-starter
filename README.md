@@ -1,1 +1,3 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+# DailyDev.io
+
+This is the project for the frontend of [DailyDev.io](https://dailydev.io) blog.
