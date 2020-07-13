@@ -1,5 +1,5 @@
 export default (req, res) => {
     return res.json({
-        message: "Hello"
+        message: "Hello World!"
     })
 }
