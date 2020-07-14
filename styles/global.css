@@ -7,7 +7,7 @@ html { font-family: 'Inter', -apple-system, BlinkMacSystemFont, Inter, Segoe UI,
 }
 
 html {
-  @apply bg-gray-100;
+  @apply bg-gray-100 bg-opacity-25;
 }
 
 html,
@@ -24,7 +24,7 @@ body {
 
 a {
   text-decoration: none;
-  @apply text-blue-600;
+  @apply text-blue-500;
 }
 
 a:hover {
