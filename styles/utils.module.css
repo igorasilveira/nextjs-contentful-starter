@@ -48,5 +48,5 @@
 }
 
 .lightText {
-    color: #999;
+    @apply text-gray-500;
 }
