@@ -1,19 +1,13 @@
 import { ReactNode } from 'react';
 
 import Head from 'next/head';
-import Link from 'next/link';
-import styles from './layout.module.css';
-import utilStyles from '../styles/utils.module.css';
 
-const name = 'Igor Silveira';
 export const siteTitle = 'DailyDev.io';
 
 export default function Layout({
   children,
-  home,
 }: {
-  children: ReactNode[],
-  home?: boolean
+  children: ReactNode[]
 }) {
   return (
     <div>
