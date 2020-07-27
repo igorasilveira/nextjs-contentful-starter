@@ -1,0 +1,13 @@
+.formInput {
+    color: var(--gray-3);
+    background-color: var(--gray-5);
+
+    @apply w-full rounded py-2 px-4 font-medium my-1;   
+}
+
+.formSubmitButton {
+    color: var(--ghost-white);
+    background-color: var(--carolina-blue);
+
+    @apply w-full rounded py-2 font-bold mt-1;
+}

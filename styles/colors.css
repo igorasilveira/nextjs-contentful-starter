@@ -1,0 +1,26 @@
+:root {
+    --rich-black: #0A0908;
+    --gray-1: #333333;
+    --gray-2: #4F4F4F;
+    --gray-3: #828282;
+    --gray-4: #BDBDBD;
+    --gray-5: #E0E0E0;
+    --gray-6: #F2F2F2;
+    --gunmetal: #22333B;
+    --ghost-white: #FAFAFA;
+    --burnt-sienna: #EB5757;
+    --carolina-blue: #4FA3E3;
+    --inchworm: #A3E34F;
+    --orange-soda: #F06543;
+    --minion-yellow: #F0D942;
+
+    --bg-color: var(--ghost-white);
+}
+
+.text-yellow {
+    color: var(--minion-yellow);
+}
+
+.text-blue {
+    color: var(--carolina-blue);
+}
