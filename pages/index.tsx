@@ -11,6 +11,15 @@ export default function Home() {
           Home |
           {` ${siteTitle}`}
         </title>
+        <script
+          id="mcjs"
+          dangerouslySetInnerHTML={{
+            __html: `
+        !function(c,h,i,m,p)
+        {m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src = i, p.parentNode.insertBefore(m, p)}
+        (document,"script","https://chimpstatic.com/mcjs-connected/js/users/a6c25c83bac098b33527db3cc/23f4a801aa7cf7fac7b3dd9c5.js");`,
+          }}
+        />
       </Head>
       <section className="h-screen flex flex-col justify-center px-2 md:px-24 xl:px-32">
         <div>
