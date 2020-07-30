@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line, max-len */
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
-import styles from './index.module.css';
+import ConvertKitForm from '../components/convertKit';
 
 export default function Home() {
   return (
@@ -24,11 +24,7 @@ export default function Home() {
             It is still <span className="text-yellow">under construction</span>, but check in again soon and <span className="text-blue">subscribe</span> for updates! 🚧
           </p>
         </div>
-        <form className="flex flex-col mt-8 lg:mt-16 lg:w-1/3 animate__animated animate__fadeInUp animate__delay-1s">
-          <input className={styles.formInput} type="text" aria-label="name" placeholder="Name" />
-          <input className={styles.formInput} type="email" aria-label="email" placeholder="Email" />
-          <button className={styles.formSubmitButton} type="submit">Keep me posted!</button>
-        </form>
+        <ConvertKitForm />
       </section>
     </Layout>
   );

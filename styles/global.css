@@ -6,15 +6,15 @@ html { font-family: 'Inter', -apple-system, BlinkMacSystemFont, Inter, Segoe UI,
     Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; }
 }
 
-@import "./colors.css";
-
+/* Vendors */
 @import "~animate.css/animate.css";
-
 @import "tailwindcss/base";
-
 @import "tailwindcss/components";
-
 @import "tailwindcss/utilities";
+@import "./convertKit.css";
+
+/* Custom */
+@import "./colors.css";
 
 html {
   background-color: var(--bg-color);
