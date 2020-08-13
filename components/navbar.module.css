@@ -2,10 +2,6 @@
     background-color: var(--rich-black);
 }
 
-.container:hover {
-    width: 10rem;
-}
-
 .navItem:hover {
     background-color: black;
     transition: background-color 200ms ease-in-out;
@@ -18,4 +14,10 @@
 
 .navItem:hover > img {
     filter: grayscale(0%) opacity(1);
+}
+
+@media screen and (min-width: 768px) {
+    .container:hover {
+        width: 10rem;
+    }
 }

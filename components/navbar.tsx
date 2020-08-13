@@ -9,7 +9,7 @@ export default function NavBar() {
       classnames(
         styles.container,
         `h-16 md:h-screen w-screen md:w-16 md:hover:w-full
-         absolute bottom-0 md:left-0 shadow-2xl 
+         fixed bottom-0 md:left-0 shadow-2xl 
          flex flex-row md:flex-col items-center
          z-10
          transition-all duration-500 ease
@@ -40,11 +40,11 @@ const NavBarLink = ({
   href: string,
   icon: string
 }) => (
-  <li className="group cursor-pointer w-full">
-    <Link href={href}>
-      <div className={
-        classnames(styles.navItem,
-          `group flex flex-row items-center justify-center md:justify-start
+    <li className="group cursor-pointer w-full">
+      <Link href={href}>
+        <div className={
+          classnames(styles.navItem,
+            `group flex flex-row items-center justify-center md:justify-start
           text-white opacity-75
           text-opacity-50
           hover:opacity-100
@@ -52,11 +52,11 @@ const NavBarLink = ({
           md:opacity-100
           p-4
           transition-all duration-150 ease-in`)
-      }
-      >
-        <img width={36} height={36} src={`/icons/${icon}.png`} alt={`Menu icon for ${text}`} />
-        <span className="text-md hidden md:group-hover:flex ml-4 font-bold">{text}</span>
-      </div>
-    </Link>
-  </li>
-);
+        }
+        >
+          <img width={36} height={36} src={`/icons/${icon}.png`} alt={`Menu icon for ${text}`} />
+          <span className="text-md hidden md:group-hover:flex ml-4 font-bold">{text}</span>
+        </div>
+      </Link>
+    </li>
+  );

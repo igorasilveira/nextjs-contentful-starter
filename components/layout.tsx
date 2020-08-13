@@ -30,7 +30,7 @@ export default function Layout({
         <script src="https://kit.fontawesome.com/a8c1cca14c.js" crossOrigin="anonymous" />
       </Head>
       <NavBar />
-      <main className="mx-0 md:ml-16 py-2 px-2 md:px-16 xl:px-32">{children}</main>
+      <main className="mx-0 mb-16 md:mb-0 md:ml-16 py-2 px-2 md:px-16 xl:px-32">{children}</main>
     </div>
   );
 }
