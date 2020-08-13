@@ -6,6 +6,8 @@ module.exports = {
         'regal-blue': {
           default: '#243c5a',
         },
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
       },
     },
     boxShadow: {
@@ -29,7 +31,11 @@ module.exports = {
       '2lg': '20px',
     },
   },
-  variants: {},
+  variants: {
+    display: ['responsive', 'hover', 'group-hover'],
+    textColor: ['responsive', 'hover', 'group-hover'],
+    opacity: ['responsive', 'hover', 'group-hover'],
+  },
   plugins: [],
   purge: [
     './pages/**/*.tsx',

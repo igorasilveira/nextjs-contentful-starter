@@ -1,0 +1,21 @@
+.container {
+    background-color: var(--rich-black);
+}
+
+.container:hover {
+    width: 10rem;
+}
+
+.navItem:hover {
+    background-color: black;
+    transition: background-color 200ms ease-in-out;
+}
+
+.navItem > img {
+    filter: grayscale(100%) opacity(0.7);
+    transition: filter 500ms ease;
+}
+
+.navItem:hover > img {
+    filter: grayscale(0%) opacity(1);
+}

@@ -15,6 +15,8 @@
     --minion-yellow: #F0D942;
 
     --bg-color: var(--ghost-white);
+    --color-primary: var(--carolina-blue);
+    --color-secondary: var(--orange-soda);
 }
 
 .text-yellow {
@@ -23,4 +25,8 @@
 
 .text-blue {
     color: var(--carolina-blue);
+}
+
+.text-red {
+    color: var(--burnt-sienna);
 }

@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 
 import Head from 'next/head';
 
+import NavBar from './navbar';
+
 export const siteTitle = 'DailyDev.io';
 
 export default function Layout({
@@ -25,8 +27,10 @@ export default function Layout({
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
+        <script src="https://kit.fontawesome.com/a8c1cca14c.js" crossOrigin="anonymous" />
       </Head>
-      <main>{children}</main>
+      <NavBar />
+      <main className="mx-0 md:ml-16 py-2 px-2 md:px-16 xl:px-32">{children}</main>
     </div>
   );
 }
