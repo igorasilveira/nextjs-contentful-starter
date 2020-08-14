@@ -23,9 +23,13 @@ export default function NavBar() {
           <img className="h-20 w-16" src="/images/logo.svg" alt="DailyDev.io logo" />
         </Link>
       </div>
-      <ul className="group flex flex-row md:flex-col w-full justify-around md:justify-start md:items-center">
+      <ul className={`group flex flex-row md:flex-col flex-grow
+        w-full justify-around md:justify-start md:items-center
+        md:my-2`}
+      >
         <NavBarLink text="Posts" href="/posts" icon="blog" />
-        <NavBarLink text="Topics" href="/posts" icon="bookmark" />
+        <NavBarLink classes="md:flex-grow" text="Topics" href="/posts" icon="bookmark" />
+        <NavBarLink text="Theme" href="#" icon="moon" />
       </ul>
     </nav>
   );
@@ -35,16 +39,18 @@ const NavBarLink = ({
   text,
   href,
   icon,
+  classes = '',
 }: {
   text: string
   href: string,
-  icon: string
+  icon: string,
+  classes?: string
 }) => (
-    <li className="group cursor-pointer w-full">
-      <Link href={href}>
-        <div className={
-          classnames(styles.navItem,
-            `group flex flex-row items-center justify-center md:justify-start
+  <li className={`group cursor-pointer w-full ${classes}`}>
+    <Link href={href}>
+      <div className={
+        classnames(styles.navItem,
+          `group flex flex-row items-center justify-center md:justify-start
           text-white opacity-75
           text-opacity-50
           hover:opacity-100
@@ -52,11 +58,11 @@ const NavBarLink = ({
           md:opacity-100
           p-4
           transition-all duration-150 ease-in`)
-        }
-        >
-          <img width={36} height={36} src={`/icons/${icon}.png`} alt={`Menu icon for ${text}`} />
-          <span className="text-md hidden md:group-hover:flex ml-4 font-bold">{text}</span>
-        </div>
-      </Link>
-    </li>
-  );
+      }
+      >
+        <img width={36} height={36} src={`/icons/${icon}.png`} alt={`Menu icon for ${text}`} />
+        <span className="text-md hidden md:group-hover:flex ml-4 font-bold">{text}</span>
+      </div>
+    </Link>
+  </li>
+);

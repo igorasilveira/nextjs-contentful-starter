@@ -31,16 +31,8 @@ body {
   box-sizing: border-box;
 }
 
-a {
-  text-decoration: none;
-  @apply text-blue-500;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-img {
-  max-width: 100%;
-  display: block;
+.truncate-multiline {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
