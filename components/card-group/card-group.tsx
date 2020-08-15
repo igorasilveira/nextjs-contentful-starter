@@ -5,7 +5,7 @@ import Card from '../card/card';
 export default function CardGroup({
   posts,
 }: {
-  posts: Post[]
+  posts: IPost[]
 }) {
   return (
     <div className="flex flex-col flex-wrap md:flex-row -mx-1 lg:-mx-4">
