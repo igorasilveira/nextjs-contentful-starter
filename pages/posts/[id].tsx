@@ -3,23 +3,27 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 
 import Head from 'next/head';
 import Layout from '../../components/layout/layout';
-import Date from '../../components/date';
+import Date from '../../components/date/date';
 import utilStyles from '../../styles/utils.module.css';
+
+import TopicGroup from '../../components/topic-group/topic-group';
 
 import { getAllPostIds, getPostData } from '../../lib/posts';
 
-export default function Post({ postData }: { postData: Post }) {
+export default function Post({ post }: { post: IPost }) {
   return (
     <Layout>
       <Head>
-        <title>{postData.title}</title>
+        <title>{post.title}</title>
       </Head>
       <article>
-        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-        <div className={utilStyles.lightText}>
-          <Date dateString={postData.date} />
+        <TopicGroup topics={post.topics} />
+        <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold mb-2">{post.title}</h1>
+        <div className="text-md md:text-lg text-gray-500 italic">
+          <Date dateString={post.date} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <img className="w-full h-48 md:h-64 my-6 md:my-10 rounded-2lg object-cover shadow-lg" src={post.image} alt={post.title} />
+        <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
       </article>
     </Layout>
   );
@@ -34,10 +38,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const postData = await getPostData(params.id as string);
+  const post = await getPostData(params.id as string);
   return {
     props: {
-      postData,
+      post,
     },
   };
 };

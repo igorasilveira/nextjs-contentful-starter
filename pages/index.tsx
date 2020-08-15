@@ -3,8 +3,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout/layout';
 import CardGroup from '../components/card-group/card-group';
+import Cta from '../components/cta/cta';
 
-const posts: Post[] = [
+export const posts: IPost[] = [
   {
     id: '0',
     title: 'A larger size larger larger post title',
@@ -16,6 +17,7 @@ const posts: Post[] = [
       'Mariann',
       'Mathilda',
     ],
+    contentHtml: '',
   },
   {
     id: '1',
@@ -28,6 +30,7 @@ const posts: Post[] = [
       'Mariann',
       'Mathilda',
     ],
+    contentHtml: '',
   },
   {
     id: '3',
@@ -40,6 +43,7 @@ const posts: Post[] = [
       'Mariann',
       'Mathilda',
     ],
+    contentHtml: '',
   },
   {
     id: '4',
@@ -52,6 +56,7 @@ const posts: Post[] = [
       'Mariann',
       'Mathilda',
     ],
+    contentHtml: '',
   },
   {
     id: '5',
@@ -64,18 +69,7 @@ const posts: Post[] = [
       'Mariann',
       'Mathilda',
     ],
-  },
-  {
-    id: '6',
-    title: 'A post title',
-    image: 'https://picsum.photos/500/300',
-    date: '1994-09-23',
-    excerpt: 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis placerat suscipit suscipit. Phasellus maximus velit id purus tempus laoreet. Aenean elementum convallis auctor. Nulla facilisi. Etiam quis lacinia erat, ut rhoncus sem. Morbi risus dolor, laoreet eget libero ac, porta congue erat. In malesuada ut nunc quis pellentesque. Quisque sit amet metus sed nulla egestas tincidunt non nec nisi.',
-    topics: [
-      'Correy',
-      'Mariann',
-      'Mathilda',
-    ],
+    contentHtml: '',
   },
 ];
 export default function Home() {
@@ -100,6 +94,9 @@ export default function Home() {
       </section>
       <section className="py-8" id="posts">
         <CardGroup posts={posts} />
+        <div className="flex flex-row justify-center my-4 md:my-8">
+          <Cta icon="ellipsis" />
+        </div>
       </section>
     </Layout>
   );

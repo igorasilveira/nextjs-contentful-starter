@@ -28,7 +28,7 @@ export default function NavBar() {
         md:my-2`}
       >
         <NavBarLink text="Posts" href="/posts" icon="blog" />
-        <NavBarLink classes="md:flex-grow" text="Topics" href="/posts" icon="bookmark" />
+        <NavBarLink classes="md:flex-grow" text="Topics" href="/topics" icon="bookmark" />
         <NavBarLink text="Theme" href="#" icon="moon" />
       </ul>
     </nav>

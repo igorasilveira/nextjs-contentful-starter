@@ -1,8 +1,10 @@
-interface Post {
+interface IPost {
   id: string;
   title: string;
   date: string;
   image: string;
   excerpt?: string;
-  topics?: string[];
+  rawTopics?: string[];
+  topics?: ITopic[];
+  contentHtml: string;
 }

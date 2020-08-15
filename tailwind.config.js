@@ -20,6 +20,9 @@ module.exports = {
         'minion-yellow': {
           default: 'var(--minion-yellow)',
         },
+        'rich-black': {
+          default: 'var(--rich-black)',
+        },
       },
     },
     boxShadow: {
