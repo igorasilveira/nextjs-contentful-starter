@@ -16,13 +16,13 @@ export function getSortedPostsData(): IPost[] {
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
+    const post = JSON.parse(fileContents);
     // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents);
 
     // Combine the data with the id
     return {
       id,
-      ...matterResult.data as IPost,
+      ...post,
     };
   });
   // Sort posts by date

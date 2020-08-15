@@ -12,7 +12,7 @@ export const posts: IPost[] = [
     image: 'https://picsum.photos/500/300',
     date: '1994-09-23',
     excerpt: 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis placerat suscipit suscipit. Phasellus maximus velit id purus tempus laoreet. Aenean elementum convallis auctor. Nulla facilisi. Etiam quis lacinia erat, ut rhoncus sem. Morbi risus dolor, laoreet eget libero ac, porta congue erat. In malesuada ut nunc quis pellentesque. Quisque sit amet metus sed nulla egestas tincidunt non nec nisi.',
-    topics: [
+    rawTopics: [
       'Correy',
       'Mariann',
       'Mathilda',
@@ -25,7 +25,7 @@ export const posts: IPost[] = [
     image: 'https://picsum.photos/500/300',
     date: '1994-09-23',
     excerpt: 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis placerat suscipit suscipit. Phasellus maximus velit id purus tempus laoreet. Aenean elementum convallis auctor. Nulla facilisi. Etiam quis lacinia erat, ut rhoncus sem. Morbi risus dolor, laoreet eget libero ac, porta congue erat. In malesuada ut nunc quis pellentesque. Quisque sit amet metus sed nulla egestas tincidunt non nec nisi.',
-    topics: [
+    rawTopics: [
       'Correy',
       'Mariann',
       'Mathilda',
@@ -38,7 +38,7 @@ export const posts: IPost[] = [
     image: 'https://picsum.photos/500/300',
     date: '1994-09-23',
     excerpt: 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis placerat suscipit suscipit. Phasellus maximus velit id purus tempus laoreet. Aenean elementum convallis auctor. Nulla facilisi. Etiam quis lacinia erat, ut rhoncus sem. Morbi risus dolor, laoreet eget libero ac, porta congue erat. In malesuada ut nunc quis pellentesque. Quisque sit amet metus sed nulla egestas tincidunt non nec nisi.',
-    topics: [
+    rawTopics: [
       'Correy',
       'Mariann',
       'Mathilda',
@@ -51,7 +51,7 @@ export const posts: IPost[] = [
     image: 'https://picsum.photos/500/300',
     date: '1994-09-23',
     excerpt: 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis placerat suscipit suscipit. Phasellus maximus velit id purus tempus laoreet. Aenean elementum convallis auctor. Nulla facilisi. Etiam quis lacinia erat, ut rhoncus sem. Morbi risus dolor, laoreet eget libero ac, porta congue erat. In malesuada ut nunc quis pellentesque. Quisque sit amet metus sed nulla egestas tincidunt non nec nisi.',
-    topics: [
+    rawTopics: [
       'Correy',
       'Mariann',
       'Mathilda',
@@ -64,7 +64,7 @@ export const posts: IPost[] = [
     image: 'https://picsum.photos/500/300',
     date: '1994-09-23',
     excerpt: 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis placerat suscipit suscipit. Phasellus maximus velit id purus tempus laoreet. Aenean elementum convallis auctor. Nulla facilisi. Etiam quis lacinia erat, ut rhoncus sem. Morbi risus dolor, laoreet eget libero ac, porta congue erat. In malesuada ut nunc quis pellentesque. Quisque sit amet metus sed nulla egestas tincidunt non nec nisi.',
-    topics: [
+    rawTopics: [
       'Correy',
       'Mariann',
       'Mathilda',
