@@ -23,8 +23,10 @@ export async function getAllTopicsIds() {
 
 export async function getTopicData(slug: string): Promise<ITopicData> {
   const topicsData: IContentfulData = await fetchAPI(
-    `query ($preview: Boolean, $slug: String) {
-      topicCollection(preview: $preview, limit: 1, where: {slug: $slug}) {
+    `query ($preview: Boolean) {
+      topicCollection(preview: $preview, limit: 1, where: {
+        slug: "${slug}"
+      }) {
         items {
           slug
           title
