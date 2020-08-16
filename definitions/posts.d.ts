@@ -1,10 +1,16 @@
 interface IPost {
   id: string;
+  slug: string;
+  heroImage: IContentfulImage;
   title: string;
-  date: string;
-  image: string;
-  excerpt?: string;
-  rawTopics?: string[];
-  topics?: ITopic[];
+  publishDate: string;
+  description?: string;
+  topicsCollection: ItopicsCollection;
   contentHtml: string;
+  linkedFrom: IContentfulLinked;
+}
+
+interface IPostCollection {
+  items: IPost[];
+  total: number;
 }

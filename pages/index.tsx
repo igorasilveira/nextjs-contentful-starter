@@ -1,78 +1,18 @@
 /* eslint-disable react/jsx-one-expression-per-line, max-len */
 import Head from 'next/head';
 import Link from 'next/link';
+
 import Layout, { siteTitle } from '../components/layout/layout';
 import CardGroup from '../components/card-group/card-group';
 import Cta from '../components/cta/cta';
 
-export const posts: IPost[] = [
-  {
-    id: '0',
-    title: 'A larger size larger larger post title',
-    image: 'https://picsum.photos/500/300',
-    date: '1994-09-23',
-    excerpt: 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis placerat suscipit suscipit. Phasellus maximus velit id purus tempus laoreet. Aenean elementum convallis auctor. Nulla facilisi. Etiam quis lacinia erat, ut rhoncus sem. Morbi risus dolor, laoreet eget libero ac, porta congue erat. In malesuada ut nunc quis pellentesque. Quisque sit amet metus sed nulla egestas tincidunt non nec nisi.',
-    rawTopics: [
-      'Correy',
-      'Mariann',
-      'Mathilda',
-    ],
-    contentHtml: '',
-  },
-  {
-    id: '1',
-    title: 'A post title',
-    image: 'https://picsum.photos/500/300',
-    date: '1994-09-23',
-    excerpt: 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis placerat suscipit suscipit. Phasellus maximus velit id purus tempus laoreet. Aenean elementum convallis auctor. Nulla facilisi. Etiam quis lacinia erat, ut rhoncus sem. Morbi risus dolor, laoreet eget libero ac, porta congue erat. In malesuada ut nunc quis pellentesque. Quisque sit amet metus sed nulla egestas tincidunt non nec nisi.',
-    rawTopics: [
-      'Correy',
-      'Mariann',
-      'Mathilda',
-    ],
-    contentHtml: '',
-  },
-  {
-    id: '3',
-    title: 'A post title',
-    image: 'https://picsum.photos/500/300',
-    date: '1994-09-23',
-    excerpt: 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis placerat suscipit suscipit. Phasellus maximus velit id purus tempus laoreet. Aenean elementum convallis auctor. Nulla facilisi. Etiam quis lacinia erat, ut rhoncus sem. Morbi risus dolor, laoreet eget libero ac, porta congue erat. In malesuada ut nunc quis pellentesque. Quisque sit amet metus sed nulla egestas tincidunt non nec nisi.',
-    rawTopics: [
-      'Correy',
-      'Mariann',
-      'Mathilda',
-    ],
-    contentHtml: '',
-  },
-  {
-    id: '4',
-    title: 'A post title',
-    image: 'https://picsum.photos/500/300',
-    date: '1994-09-23',
-    excerpt: 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis placerat suscipit suscipit. Phasellus maximus velit id purus tempus laoreet. Aenean elementum convallis auctor. Nulla facilisi. Etiam quis lacinia erat, ut rhoncus sem. Morbi risus dolor, laoreet eget libero ac, porta congue erat. In malesuada ut nunc quis pellentesque. Quisque sit amet metus sed nulla egestas tincidunt non nec nisi.',
-    rawTopics: [
-      'Correy',
-      'Mariann',
-      'Mathilda',
-    ],
-    contentHtml: '',
-  },
-  {
-    id: '5',
-    title: 'A post title',
-    image: 'https://picsum.photos/500/300',
-    date: '1994-09-23',
-    excerpt: 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis placerat suscipit suscipit. Phasellus maximus velit id purus tempus laoreet. Aenean elementum convallis auctor. Nulla facilisi. Etiam quis lacinia erat, ut rhoncus sem. Morbi risus dolor, laoreet eget libero ac, porta congue erat. In malesuada ut nunc quis pellentesque. Quisque sit amet metus sed nulla egestas tincidunt non nec nisi.',
-    rawTopics: [
-      'Correy',
-      'Mariann',
-      'Mathilda',
-    ],
-    contentHtml: '',
-  },
-];
-export default function Home() {
+import { getPostsForHome } from '../lib/posts';
+
+export default function Home({
+  posts,
+}: {
+  posts: IPost[]
+}) {
   return (
     <Layout>
       <Head>
@@ -101,3 +41,11 @@ export default function Home() {
     </Layout>
   );
 }
+
+export const getStaticProps = async () => {
+  const posts = await getPostsForHome();
+
+  return {
+    props: { posts },
+  };
+};

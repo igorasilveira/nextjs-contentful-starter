@@ -8,9 +8,14 @@ import TopicComponent from '../../components/topic/topic';
 
 import { getAllTopicsIds, getTopicData } from '../../lib/topics';
 import CardGroup from '../../components/card-group/card-group';
-import { posts } from '..';
 
-export default function Topic({ topic }: { topic: ITopic }) {
+export default function Topic({
+  topic,
+  posts,
+}: {
+  topic: ITopic
+  posts: IPost[]
+}) {
   return (
     <Layout>
       <Head>
@@ -38,7 +43,7 @@ export default function Topic({ topic }: { topic: ITopic }) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllTopicsIds();
+  const paths = await getAllTopicsIds();
   return {
     paths,
     fallback: false,
@@ -46,10 +51,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const topic = await getTopicData(params.id as string);
+  const { topic, posts } = await getTopicData(params.id as string);
   return {
     props: {
       topic,
+      posts,
     },
   };
 };

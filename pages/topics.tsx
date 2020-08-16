@@ -36,8 +36,7 @@ export default function Topics({
 }
 
 export const getStaticProps = async () => {
-  const topics = getSortedTopicsData();
-
+  const topics = await getSortedTopicsData();
   return {
     props: { topics },
   };

@@ -1,43 +1,107 @@
-import fs from 'fs';
-import path from 'path';
+import { fetchAPI } from './contentful';
 
-const topicsDirectory = path.join(process.cwd(), 'topics');
+export async function getAllTopicsIds() {
+  const data: IContentfulData = await fetchAPI(
+    `query($preview: Boolean) {
+      topicCollection(preview: $preview) {
+        items {
+          slug
+        },
+      }
+    }`,
+    {},
+  );
 
-export function getAllTopicsIds() {
-  const fileNames = fs.readdirSync(topicsDirectory);
+  const ids: ITopic[] = data.topicCollection.items;
 
-  return fileNames.map((fileName) => ({
+  return ids.map((topic) => ({
     params: {
-      id: fileName.replace(/\.json$/, ''),
+      id: topic.slug,
     },
   }));
 }
 
-export function getTopicData(id: string): ITopic {
-  const fullPath = path.join(topicsDirectory, `${id}.json`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+export async function getTopicData(slug: string): Promise<ITopicData> {
+  const topicsData: IContentfulData = await fetchAPI(
+    `query ($preview: Boolean, $slug: String) {
+      topicCollection(preview: $preview, limit: 1, where: {slug: $slug}) {
+        items {
+          slug
+          title
+          color
+          linkedFrom {
+            blogPostCollection(limit: 5) {
+              items {
+                title
+                body
+                slug
+                publishDate
+                heroImage {
+                  url
+                  description
+                }
+                topicsCollection {
+                  items {
+                    title,
+                    color,
+                    slug
+                  }
+                }
+              }
+              total
+            }
+          }
+        }
+      }
+    }`,
+    {},
+  );
 
-  const topicData = JSON.parse(fileContents);
+  const topic: ITopic = topicsData.topicCollection.items.shift();
+  const posts: IPost[] = topic.linkedFrom.blogPostCollection.items;
 
-  // Combine the data with the id and contentHtml
+  posts.sort((a, b) => {
+    if (a.publishDate < b.publishDate) {
+      return 1;
+    }
+    return -1;
+  });
+
   return {
-    slug: id.replace(/\.json$/, ''),
-    id: id.replace(/\.json$/, ''),
-    ...topicData,
+    topic,
+    posts,
   };
 }
 
-export function getAllTopics() {
-  const fileNames = fs.readdirSync(topicsDirectory);
+export async function getAllTopics() {
+  const data: IContentfulData = await fetchAPI(
+    `query($preview: Boolean) {
+      topicCollection(preview: $preview) {
+        items {
+          slug
+          title
+          color
+          linkedFrom {
+            blogPostCollection {
+              total
+            }
+          }
+        },
+      }
+    }`,
+    {},
+  );
 
-  return fileNames.map((fileName) => getTopicData(fileName.replace(/\.json$/, '')));
+  const topics: ITopic[] = data.topicCollection.items;
+
+  return topics;
 }
 
-export function getSortedTopicsData(): ITopic[] {
-  const topics: ITopic[] = getAllTopics();
-  // Sort posts by date
+export async function getSortedTopicsData(): Promise<ITopic[]> {
+  const topics = await getAllTopics();
+
   return topics.sort((a, b) => {
-    if (a.postCount < b.postCount) {
+    if (a.linkedFrom.blogPostCollection.total < b.linkedFrom.blogPostCollection.total) {
       return 1;
     }
     return -1;

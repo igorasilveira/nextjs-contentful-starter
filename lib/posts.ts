@@ -1,59 +1,94 @@
-import fs from 'fs';
-import path from 'path';
+import { fetchAPI } from './contentful';
 
-import { getTopicData } from './topics';
+export async function getPostsForHome() {
+  const data: IContentfulData = await fetchAPI(
+    `query ($preview: Boolean){
+      blogPostCollection(preview: $preview, limit: 5, order: [
+        publishDate_DESC
+      ]) {
+        items {
+          title,
+          slug,
+          heroImage {
+            url,
+            description
+          },
+          description,
+          publishDate,
+          topicsCollection {
+            items {
+              title,
+              slug,
+              color
+            }
+          }
+        }
+      },
+    }`,
+    {},
+  );
 
-const postsDirectory = path.join(process.cwd(), 'posts');
+  const posts: IPost[] = data.blogPostCollection.items;
 
-export function getSortedPostsData(): IPost[] {
-  // Get file names under /posts
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
-    // Remove ".json" from file name to get id
-    const id = fileName.replace(/\.json$/, '');
-
-    // Read markdown file as string
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-    const post = JSON.parse(fileContents);
-    // Use gray-matter to parse the post metadata section
-
-    // Combine the data with the id
-    return {
-      id,
-      ...post,
-    };
-  });
-  // Sort posts by date
-  return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    }
-    return -1;
-  });
+  return posts;
 }
 
-export function getAllPostIds() {
-  const fileNames = fs.readdirSync(postsDirectory);
+export async function getAllPostIds() {
+  const data: IContentfulData = await fetchAPI(
+    `query ($preview: Boolean){
+        blogPostCollection(preview: $preview) {
+          items {
+            slug
+        },
+      }
+    }`,
+    {},
+  );
 
-  return fileNames.map((fileName) => ({
+  const posts: IPost[] = data.blogPostCollection.items;
+
+  return posts.map(({ slug }) => ({
     params: {
-      id: fileName.replace(/\.json$/, ''),
+      id: slug,
     },
   }));
 }
 
-export async function getPostData(id: string): Promise<IPost> {
-  const fullPath = path.join(postsDirectory, `${id}.json`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+export async function getPostData(slug: string) {
+  const data: IContentfulData = await fetchAPI(
+    `query ($preview: Boolean){
+        blogPostCollection(preview: $preview, where: {
+          slug: "${slug}"
+        }) {
+          items {
+            title
+            slug
+            publishDate
+            heroImage{
+              description
+              url
+            },
+            body,
+            author {
+              name
+              image {
+                url
+              }
+            },
+            topicsCollection {
+              items {
+                title
+                slug
+                color
+              }
+            }
+        },
+      }
+    }`,
+    {},
+  );
 
-  const post: IPost = JSON.parse(fileContents);
-  post.topics = post.rawTopics.map((topic) => getTopicData(topic));
+  const post: IPost = data.blogPostCollection.items.shift();
 
-  // Combine the data with the id and contentHtml
-  return {
-    id,
-    ...post,
-  };
+  return post;
 }
