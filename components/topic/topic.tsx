@@ -11,8 +11,20 @@ export default function Topic({
 }) {
   const content: ReactNode = (
     <a>
-      <span className="text-xl md:text-2xl text-rich-black font-normal tracking-wide mr-4">{topic.title}</span>
-      <span className="text-xl md:text-2xl font-semibold" style={{ color: topic.color }}>{topic.linkedFrom.blogPostCollection.total}</span>
+      <span className={
+        classnames(
+          'text-xl md:text-2xl text-rich-black font-normal tracking-wide',
+          { 'mr-4': topic.linkedFrom },
+        )
+      }
+      >
+        {topic.title}
+
+      </span>
+      {
+        topic.linkedFrom
+        && <span className="text-xl md:text-2xl font-semibold" style={{ color: topic.color }}>{topic.linkedFrom.blogPostCollection.total}</span>
+      }
     </a>
   );
 

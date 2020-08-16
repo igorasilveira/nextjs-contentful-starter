@@ -80,7 +80,7 @@ export async function getPostData(slug: string) {
                 title
                 slug
                 color
-              }
+              },
             }
         },
       }
