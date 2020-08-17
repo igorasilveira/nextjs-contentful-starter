@@ -34,9 +34,9 @@ export default function Home({
       </section>
       <section className="py-4 md:px-8" id="posts">
         <CardGroup posts={posts} />
-        <div className="flex flex-row justify-center my-4 md:my-8">
+        {/* <div className="flex flex-row justify-center my-4 md:my-8">
           <Cta icon="ellipsis" />
-        </div>
+        </div> */}
       </section>
     </Layout>
   );
