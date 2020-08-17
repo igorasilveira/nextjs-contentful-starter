@@ -1,3 +1,6 @@
+import remark from 'remark';
+import html from 'remark-html';
+
 import { fetchAPI } from './contentful';
 
 export async function getPostsForHome() {
@@ -89,6 +92,13 @@ export async function getPostData(slug: string) {
   );
 
   const post: IPost = data.blogPostCollection.items.shift();
+
+  const processedContent = await remark()
+    .use(html)
+    .process(post.body);
+  const contentHtml = processedContent.toString();
+
+  post.contentHtml = contentHtml;
 
   return post;
 }

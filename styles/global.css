@@ -15,6 +15,9 @@ html { font-family: 'Inter', -apple-system, BlinkMacSystemFont, Inter, Segoe UI,
 /* Custom */
 @import "./colors.css";
 
+/* Code */
+@import "/css/prism.css";
+
 html {
   background-color: var(--bg-color);
 }

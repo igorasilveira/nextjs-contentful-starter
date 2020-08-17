@@ -28,9 +28,18 @@ export default function Layout({
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
         <script src="https://kit.fontawesome.com/a8c1cca14c.js" crossOrigin="anonymous" />
+        <script src="/js/prism.js" async />
       </Head>
       <NavBar />
-      <main className="mx-0 mb-16 md:mb-0 md:ml-16 py-4 md:py-8 px-2 md:px-16 xl:px-48">{children}</main>
+      <main className="mx-0 mb-16 md:mb-0 md:ml-16 py-4 md:py-8 px-2 md:px-16 xl:px-48">
+        {children}
+
+        <p className="mt-16 mb-4 text-gray-400 text-sm">
+          DailyDev.io &copy;
+          {' '}
+          {new Date().getFullYear()}
+        </p>
+      </main>
     </div>
   );
 }

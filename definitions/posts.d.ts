@@ -8,6 +8,7 @@ interface IPost {
   topicsCollection: ItopicsCollection;
   contentHtml: string;
   linkedFrom: IContentfulLinked;
+  body: string;
 }
 
 interface IPostCollection {

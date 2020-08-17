@@ -37,6 +37,7 @@ export async function getTopicData(slug: string): Promise<ITopicData> {
                 title
                 body
                 slug
+                description
                 publishDate
                 heroImage {
                   url

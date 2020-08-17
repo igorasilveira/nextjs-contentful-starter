@@ -11,7 +11,7 @@ export default function CardGroup({
     <div className="flex flex-col flex-wrap md:flex-row -mx-1 lg:-mx-4">
       {posts.map((post, index) => (
         <div
-          key={post.id}
+          key={post.slug}
           className={classnames(
             'my-2 px-2 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3',
             { 'md:w-full lg:w-2/3': index === 0 },

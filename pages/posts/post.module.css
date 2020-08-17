@@ -1,0 +1,54 @@
+.postBody h2,
+.postBody h3 {
+    @apply font-bold mt-4 mb-2;
+}
+
+.postBody h2 {
+    @apply text-2xl;
+}
+
+.postBody h3 {
+    @apply text-3xl;
+}
+
+.postBody a {
+    @apply text-carolina-blue underline;
+}
+
+.postBody code,
+.postBody pre {
+    @apply p-1 rounded;
+}
+
+.postBody pre {
+    @apply my-2 bg-gray-900 p-2;
+}
+
+.postBody img {
+    width: 100%;
+    @apply mx-auto my-4 rounded shadow-md;
+}
+
+@screen md {
+    .postBody h2,
+    .postBody h3 {
+        @apply mt-5 mb-3;
+    }
+
+    .postBody h2 {
+        @apply text-lg;
+    }
+
+    .postBody h3 {
+        @apply text-2xl;
+    }
+
+    .postBody img {
+        width: 80%;
+        @apply my-8;
+    }
+
+    .postBody pre {
+        @apply my-4 p-4;
+    }
+}
