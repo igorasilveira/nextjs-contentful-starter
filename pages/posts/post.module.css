@@ -3,12 +3,16 @@
     @apply font-bold mt-4 mb-2;
 }
 
+.postBody h1 {
+    @apply text-3xl;
+}
+
 .postBody h2 {
     @apply text-2xl;
 }
 
 .postBody h3 {
-    @apply text-3xl;
+    @apply text-xl;
 }
 
 .postBody a {
@@ -39,10 +43,14 @@
         @apply mt-5 mb-3;
     }
 
-    .postBody h2 {
-        @apply text-lg;
+    .postBody h1 {
+        @apply text-4xl;
     }
-
+    
+    .postBody h2 {
+        @apply text-3xl;
+    }
+    
     .postBody h3 {
         @apply text-2xl;
     }

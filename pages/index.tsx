@@ -32,7 +32,7 @@ export default function Home({
           Start with our most recents posts <a href="#posts" className="text-primary underline">bellow</a>, or browse our <Link href="/topics"><a className="text-secondary underline">topics</a></Link>.
         </p>
       </section>
-      <section className="py-8" id="posts">
+      <section className="py-4 md:px-8" id="posts">
         <CardGroup posts={posts} />
         <div className="flex flex-row justify-center my-4 md:my-8">
           <Cta icon="ellipsis" />
