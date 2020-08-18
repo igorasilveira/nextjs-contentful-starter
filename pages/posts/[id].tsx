@@ -34,7 +34,7 @@ export default function Post({ post }: { post: IPost }) {
         <div className="text-md md:text-lg text-gray-500 italic">
           <Date dateString={post.publishDate} />
         </div>
-        <img className="w-full h-48 md:h-64 my-4 md:my-10 rounded-2lg object-cover shadow-lg" src={post.heroImage.url} alt={post.title} />
+        <img className="w-full h-48 md:h-64 my-4 md:my-10 rounded-2lg object-cover shadow-lg" src={post.heroImage.url} alt={""} />
         <div
           className={postStyles.postBody}
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}

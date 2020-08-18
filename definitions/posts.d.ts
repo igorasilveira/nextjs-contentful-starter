@@ -1,7 +1,8 @@
 interface IPost {
   id: string;
   slug: string;
-  heroImage: IContentfulImage;
+  heroImage: ICloudinaryImage;
+  images: ICloudinaryImage[];
   title: string;
   publishDate: string;
   description?: string;

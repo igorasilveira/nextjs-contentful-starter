@@ -12,10 +12,7 @@ export async function getPostsForHome() {
         items {
           title,
           slug,
-          heroImage {
-            url,
-            description
-          },
+          images
           description,
           publishDate,
           topicsCollection {
@@ -32,6 +29,7 @@ export async function getPostsForHome() {
   );
 
   const posts: IPost[] = data.blogPostCollection.items;
+  posts.map(post => post.heroImage = post.images.shift());
 
   return posts;
 }
@@ -67,10 +65,7 @@ export async function getPostData(slug: string) {
             title
             slug
             publishDate
-            heroImage{
-              description
-              url
-            },
+            images
             body,
             author {
               name
@@ -92,6 +87,7 @@ export async function getPostData(slug: string) {
   );
 
   const post: IPost = data.blogPostCollection.items.shift();
+  post.heroImage = post.images.shift();
 
   const processedContent = await remark()
     .use(html)
