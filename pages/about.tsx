@@ -53,7 +53,7 @@ export default function About({
             bg-white rounded-2lg shadow`
         }
         >
-          <img className="h-32 md:h-40 -mt-12 lg:-ml-4 rounded-2lg lg:h-full object-contain shadow-lg" src={person.image.url} alt={person.image.title} />
+          <img className="h-32 md:h-40 -mt-12 lg:-ml-8 rounded-2lg lg:h-full object-contain shadow-lg" src={person.image.url} alt={person.image.title} />
           <div className="flex flex-col p-8">
             <h4 className="font-bold text-lg md:text-2xl">{person.name}</h4>
             <p className="my-2 leading-snug text-md md:text-lg">{person.shortBio}</p>

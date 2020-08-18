@@ -8,7 +8,7 @@ export default function CardGroup({
   posts: IPost[]
 }) {
   return (
-    <div className="flex flex-col flex-wrap md:flex-row -mx-1 lg:-mx-4">
+    <div className="flex flex-col flex-wrap md:flex-row -mx-1 lg:-mx-4 mt-8">
       {posts.map((post, index) => (
         <div
           key={post.slug}
