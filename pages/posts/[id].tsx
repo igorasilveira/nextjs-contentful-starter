@@ -26,7 +26,6 @@ export default function Post({ post }: { post: IPost }) {
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
-        <script src="/js/prism.js" async />
       </Head>
       <article>
         <TopicGroup topics={post.topicsCollection.items} isPill isLink />

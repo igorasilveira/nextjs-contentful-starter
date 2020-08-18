@@ -19,6 +19,18 @@ export default function About({
           About |
           {` ${siteTitle}`}
         </title>
+        <meta
+          name="description"
+          content="All things Web Dev"
+        />
+        <meta
+          property="og:image"
+          content={`https://og-image.now.sh/${encodeURI(
+            siteTitle,
+          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+        />
+        <meta name="og:title" content={siteTitle} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <section className="flex flex-col justify-center">
         <h1 className="text-3xl lg:text-5xl font-bold leading-tight">
@@ -63,29 +75,29 @@ export default function About({
             )}
             >
               {person.facebook
-              && (
-                <a href={person.facebook} target="_blank" rel="noreferrer">
-                  <img className="h-6" src="/icons/facebook.png" alt="Facebook" />
-                </a>
-              )}
+                && (
+                  <a href={person.facebook} target="_blank" rel="noreferrer">
+                    <img className="h-6" src="/icons/facebook.png" alt="Facebook" />
+                  </a>
+                )}
               {person.twitter
-              && (
-                <a href={person.twitter} target="_blank" rel="noreferrer">
-                  <img className="h-6" src="/icons/twitter.png" alt="Twitter" />
-                </a>
-              )}
+                && (
+                  <a href={person.twitter} target="_blank" rel="noreferrer">
+                    <img className="h-6" src="/icons/twitter.png" alt="Twitter" />
+                  </a>
+                )}
               {person.github
-              && (
-                <a href={person.github} target="_blank" rel="noreferrer">
-                  <img className="h-6" src="/icons/github.png" alt="GitHub" />
-                </a>
-              )}
+                && (
+                  <a href={person.github} target="_blank" rel="noreferrer">
+                    <img className="h-6" src="/icons/github.png" alt="GitHub" />
+                  </a>
+                )}
               {person.linkedIn
-              && (
-                <a href={person.linkedIn} target="_blank" rel="noreferrer">
-                  <img className="h-6" src="/icons/linkedin.png" alt="LinkedIn" />
-                </a>
-              )}
+                && (
+                  <a href={person.linkedIn} target="_blank" rel="noreferrer">
+                    <img className="h-6" src="/icons/linkedin.png" alt="LinkedIn" />
+                  </a>
+                )}
             </div>
           </div>
         </div>
