@@ -29,7 +29,7 @@ export async function getPostsForHome() {
   );
 
   const posts: IPost[] = data.blogPostCollection.items;
-  posts.map(post => post.heroImage = post.images.shift());
+  posts.forEach((post) => { post.heroImage = post.images.shift(); });
 
   return posts;
 }

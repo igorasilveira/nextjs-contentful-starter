@@ -39,10 +39,7 @@ export async function getTopicData(slug: string): Promise<ITopicData> {
                 slug
                 description
                 publishDate
-                heroImage {
-                  url
-                  description
-                }
+                images
                 topicsCollection {
                   items {
                     title,
