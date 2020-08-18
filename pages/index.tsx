@@ -37,9 +37,9 @@ export default function Home({
         <h1 className="text-3xl lg:text-5xl font-bold leading-tight">
           Welcome to DailyDev.io <span role="img" aria-label="waving hand">👋</span>,
         </h1>
-        <h3 className="text-lg lg:text-3xl my-4 lg:my-6 leading-tight">
+        <h2 className="text-lg lg:text-3xl my-4 lg:my-6 leading-tight">
           The goal of this site is to create content to aid you through your web development journey with tools, tips and experiences.
-        </h3>
+        </h2>
         <p className="text-sm lg:text-2xl text-gray-700 italic font-semibold">
           Start with our most recents posts <a href="#posts" className="text-primary underline">bellow</a>, or browse our <Link href="/topics"><a className="text-secondary underline">topics</a></Link>.
         </p>
