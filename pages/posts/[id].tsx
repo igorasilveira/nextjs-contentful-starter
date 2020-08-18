@@ -2,9 +2,9 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 
 import Head from 'next/head';
-import Layout from '../../components/layout/layout';
-import Date from '../../components/date/date';
 
+import Layout, { siteTitle } from '../../components/layout/layout';
+import Date from '../../components/date/date';
 import TopicGroup from '../../components/topic-group/topic-group';
 
 import postStyles from './post.module.css';
@@ -16,6 +16,16 @@ export default function Post({ post }: { post: IPost }) {
     <Layout>
       <Head>
         <title>{post.title}</title>
+        <meta
+          name="description"
+          content={post.title}
+        />
+        <meta
+          property="og:image"
+          content={post.heroImage.url}
+        />
+        <meta name="og:title" content={siteTitle} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <article>
         <TopicGroup topics={post.topicsCollection.items} isPill isLink />
