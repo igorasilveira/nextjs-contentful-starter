@@ -6,7 +6,8 @@ interface IContentfulImage {
 
 interface IContentfulData {
   blogPostCollection?: IPostCollection;
-  topicCollection?: ItopicsCollection;
+  topicCollection?: ITopicsCollection;
+  personCollection?: IPersonsCollection;
 }
 
 interface IContentfulItems {
@@ -15,5 +16,5 @@ interface IContentfulItems {
 
 interface IContentfulLinked {
   blogPostCollection?: IPostCollection;
-  topicsCollection?: ItopicsCollection;
+  topicsCollection?: ITopicsCollection;
 }

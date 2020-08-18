@@ -23,20 +23,25 @@ export default function Home({
       </Head>
       <section className="flex flex-col justify-center">
         <h1 className="text-3xl lg:text-5xl font-bold leading-tight">
-          Welcome to DailyDev.io,
+          Welcome to DailyDev.io <span role="img" aria-label="waving hand">👋</span>,
         </h1>
-        <h3 className="text-lg lg:text-3xl my-4 lg:my-6 leading-tight text-gray-700">
+        <h3 className="text-lg lg:text-3xl my-4 lg:my-6 leading-tight">
           The goal of this site is to create content to aid you through your web development journey with tools, tips and experiences.
         </h3>
-        <p className="text-md lg:text-2xl font-medium">
+        <p className="text-sm lg:text-2xl text-gray-700 italic font-semibold">
           Start with our most recents posts <a href="#posts" className="text-primary underline">bellow</a>, or browse our <Link href="/topics"><a className="text-secondary underline">topics</a></Link>.
         </p>
       </section>
-      <section className="py-4 md:px-8" id="posts">
+      <section className="my-4 md:my-6" id="posts">
         <CardGroup posts={posts} />
-        {/* <div className="flex flex-row justify-center my-4 md:my-8">
-          <Cta icon="ellipsis" />
-        </div> */}
+        {
+          posts.length >= 5
+          && (
+            <div className="flex flex-row justify-center my-4 md:my-8">
+              <Cta icon="ellipsis" />
+            </div>
+          )
+        }
       </section>
     </Layout>
   );

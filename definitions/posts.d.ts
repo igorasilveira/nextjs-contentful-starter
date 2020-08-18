@@ -5,7 +5,7 @@ interface IPost {
   title: string;
   publishDate: string;
   description?: string;
-  topicsCollection: ItopicsCollection;
+  topicsCollection: ITopicsCollection;
   contentHtml: string;
   linkedFrom: IContentfulLinked;
   body: string;

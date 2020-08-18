@@ -9,7 +9,7 @@ interface ITopic {
   linkedFrom: IContentfulLinked;
 }
 
-interface ItopicsCollection {
+interface ITopicsCollection {
   items: ITopic[];
   total: number;
 }

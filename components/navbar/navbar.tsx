@@ -18,18 +18,18 @@ export default function NavBar() {
       )
     }
     >
-      <div className="hidden md:block md:my-4 cursor-pointer">
-        <Link href="/">
-          <img className="h-20 w-16" src="/images/logo.svg" alt="DailyDev.io logo" />
-        </Link>
+      <div className="hidden md:block my-4 mt-12">
+        {/* <Link href="/"> */}
+        <img className="h-20 w-16" src="/images/logo.svg" alt="DailyDev.io logo" />
+        {/* </Link> */}
       </div>
       <ul className={`group flex flex-row md:flex-col flex-grow
         w-full justify-around md:justify-start md:items-center
         md:my-2`}
       >
-        <NavBarLink text="Posts" href="/posts" icon="blog" />
+        <NavBarLink text="Home" href="/" icon="home" />
         <NavBarLink classes="md:flex-grow" text="Topics" href="/topics" icon="bookmark" />
-        <NavBarLink text="Theme" href="#" icon="moon" />
+        <NavBarLink text="About" href="/about" icon="info" />
       </ul>
     </nav>
   );
@@ -40,13 +40,19 @@ const NavBarLink = ({
   href,
   icon,
   classes = '',
+  mobileOnly = false,
 }: {
   text: string
   href: string,
   icon: string,
-  classes?: string
+  classes?: string,
+  mobileOnly?: boolean,
 }) => (
-  <li className={`group cursor-pointer w-full ${classes}`}>
+  <li className={classnames(
+    `group cursor-pointer w-full ${classes}`,
+    { 'block md:hidden': mobileOnly },
+  )}
+  >
     <Link href={href}>
       <div className={
         classnames(styles.navItem,

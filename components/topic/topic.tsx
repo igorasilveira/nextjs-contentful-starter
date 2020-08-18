@@ -19,7 +19,7 @@ export default function Topic({
             'font-normal tracking-wide',
             { 'text-xl md:text-2xl text-rich-black': !isPill },
             { 'mr-4': topic.linkedFrom },
-            { 'inline-block text-xs md:text-sm text-ghost-white font-semibold': isPill },
+            { 'inline-block text-xs md:text-sm text-ghost-white font-medium': isPill },
           )
         }
       >

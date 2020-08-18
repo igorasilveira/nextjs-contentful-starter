@@ -12,7 +12,7 @@ export default function TopicGroup({
   isPill?: boolean
 }) {
   return (
-    <div className="my-2 md:my-4 flex flex-row flex-wrap">
+    <div className="my-1 md:my-3 flex flex-row flex-wrap">
       {topics.map((topic: ITopic) => (
         <div
           key={topic.slug}

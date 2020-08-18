@@ -31,7 +31,7 @@ export default function Layout({
         <script src="/js/prism.js" async />
       </Head>
       <NavBar />
-      <main className="mx-0 mb-16 md:mb-0 md:ml-16 py-4 md:py-8 px-3 md:px-16 xl:px-48">
+      <main className="mx-0 mb-16 md:mb-0 md:ml-16 py-8 md:py-12 px-4 md:px-16 xl:px-48 text-rich-black">
         {children}
 
         <p className="mt-16 mb-4 text-gray-400 text-sm">
