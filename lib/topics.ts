@@ -59,6 +59,7 @@ export async function getTopicData(slug: string): Promise<ITopicData> {
 
   const topic: ITopic = topicsData.topicCollection.items.shift();
   const posts: IPost[] = topic.linkedFrom.blogPostCollection.items;
+  posts.forEach((post) => { post.heroImage = post.images.shift(); });
 
   posts.sort((a, b) => {
     if (a.publishDate < b.publishDate) {
