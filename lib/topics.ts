@@ -2,14 +2,11 @@ import { fetchAPI } from './contentful';
 
 export async function getAllTopicsIds() {
   const data: IContentfulData = await fetchAPI(
-    `query($preview: Boolean) {
-      topicCollection(preview: $preview) {
-        items {
-          slug
-        },
-      }
+    `topicCollection(preview: $preview) {
+      items {
+        slug
+      },
     }`,
-    {},
   );
 
   const ids: ITopic[] = data.topicCollection.items;
@@ -23,38 +20,35 @@ export async function getAllTopicsIds() {
 
 export async function getTopicData(slug: string): Promise<ITopicData> {
   const topicsData: IContentfulData = await fetchAPI(
-    `query ($preview: Boolean) {
-      topicCollection(preview: $preview, limit: 1, where: {
+    `topicCollection(preview: $preview, limit: 1, where: {
         slug: "${slug}"
       }) {
-        items {
-          slug
-          title
-          color
-          linkedFrom {
-            blogPostCollection(limit: 5) {
-              items {
-                title
-                body
-                slug
-                description
-                publishDate
-                images
-                topicsCollection {
-                  items {
-                    title,
-                    color,
-                    slug
-                  }
+      items {
+        slug
+        title
+        color
+        linkedFrom {
+          blogPostCollection(limit: 5) {
+            items {
+              title
+              body
+              slug
+              description
+              publishDate
+              images
+              topicsCollection {
+                items {
+                  title,
+                  color,
+                  slug
                 }
               }
-              total
             }
+            total
           }
         }
       }
     }`,
-    {},
   );
 
   const topic: ITopic = topicsData.topicCollection.items.shift();
@@ -76,21 +70,18 @@ export async function getTopicData(slug: string): Promise<ITopicData> {
 
 export async function getAllTopics() {
   const data: IContentfulData = await fetchAPI(
-    `query($preview: Boolean) {
-      topicCollection(preview: $preview) {
-        items {
-          slug
-          title
-          color
-          linkedFrom {
-            blogPostCollection {
-              total
-            }
+    `topicCollection(preview: $preview) {
+      items {
+        slug
+        title
+        color
+        linkedFrom {
+          blogPostCollection {
+            total
           }
-        },
-      }
+        }
+      },
     }`,
-    {},
   );
 
   const topics: ITopic[] = data.topicCollection.items;
@@ -100,17 +91,14 @@ export async function getAllTopics() {
 
 export async function getTopicsForSitemap(): Promise<ITopic[]> {
   const data: IContentfulData = await fetchAPI(
-    `query ($preview: Boolean){
-        topicCollection(preview: $preview) {
-          items {
-            slug
-            sys {
-              publishedAt
-            }
-        },
-      }
+    `topicCollection(preview: $preview) {
+        items {
+          slug
+          sys {
+            publishedAt
+          }
+      },
     }`,
-    {},
   );
 
   const topics: ITopic[] = data.topicCollection.items;
