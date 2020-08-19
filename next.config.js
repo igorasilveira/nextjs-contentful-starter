@@ -4,5 +4,14 @@ module.exports = {
     CONTENTFUL_API_PREVIEW_KEY: 'GYBQ8PwCChH8V9PFiQd-FlJSEcjaPYp826qvhRDYqqQ',
     CONTENTFUL_SPACE_ID: 'b176vvh3ytod',
     CONTENTFUL_ENVIRONMENT: 'master',
+    HOST: 'https://dailydev.io'
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/sitemap.xml",
+        destination: "/api/sitemap",
+      },
+    ];
   },
 };

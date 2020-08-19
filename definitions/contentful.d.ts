@@ -18,3 +18,7 @@ interface IContentfulLinked {
   blogPostCollection?: IPostCollection;
   topicsCollection?: ITopicsCollection;
 }
+
+interface IContentfulSys {
+  publishedAt: string;
+}

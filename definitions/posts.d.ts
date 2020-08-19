@@ -10,6 +10,7 @@ interface IPost {
   contentHtml: string;
   linkedFrom: IContentfulLinked;
   body: string;
+  sys?: IContentfulSys;
 }
 
 interface IPostCollection {

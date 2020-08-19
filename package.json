@@ -19,6 +19,7 @@
     "react-dom": "16.13.1",
     "remark": "^12.0.1",
     "remark-html": "^12.0.0",
+    "sitemap": "^6.2.0",
     "tailwindcss": "^1.6.2"
   },
   "devDependencies": {

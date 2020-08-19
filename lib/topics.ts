@@ -98,6 +98,26 @@ export async function getAllTopics() {
   return topics;
 }
 
+export async function getTopicsForSitemap(): Promise<ITopic[]> {
+  const data: IContentfulData = await fetchAPI(
+    `query ($preview: Boolean){
+        topicCollection(preview: $preview) {
+          items {
+            slug
+            sys {
+              publishedAt
+            }
+        },
+      }
+    }`,
+    {},
+  );
+
+  const topics: ITopic[] = data.topicCollection.items;
+
+  return topics;
+}
+
 export async function getSortedTopicsData(): Promise<ITopic[]> {
   const topics = await getAllTopics();
 

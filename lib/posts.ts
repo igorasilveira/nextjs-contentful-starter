@@ -55,6 +55,24 @@ export async function getAllPostIds() {
   }));
 }
 
+export async function getPostsForSitemap(): Promise<IPost[]> {
+  const data: IContentfulData = await fetchAPI(
+    `query ($preview: Boolean){
+        blogPostCollection(preview: $preview) {
+          items {
+            slug
+            publishDate
+        },
+      }
+    }`,
+    {},
+  );
+
+  const posts: IPost[] = data.blogPostCollection.items;
+
+  return posts;
+}
+
 export async function getPostData(slug: string) {
   const data: IContentfulData = await fetchAPI(
     `query ($preview: Boolean){

@@ -7,6 +7,7 @@ interface ITopic {
   slug: string;
   contentHtml: string;
   linkedFrom: IContentfulLinked;
+  sys?: IContentfulSys;
 }
 
 interface ITopicsCollection {
