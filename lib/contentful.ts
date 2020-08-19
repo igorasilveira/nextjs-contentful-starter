@@ -5,7 +5,7 @@ export async function fetchAPI(query, { variables = {} } = {}) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.CONTENTFUL_API_PREVIEW_KEY}`,
+      Authorization: `Bearer ${process.env.CONTENTFUL_API_KEY}`,
     },
     body: JSON.stringify({
       query,
