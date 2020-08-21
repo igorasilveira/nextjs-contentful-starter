@@ -44,7 +44,7 @@ export default function Home({
           Start with our most recents posts <a href="#posts" className="text-primary underline">bellow</a>, or browse our <Link href="/topics"><a className="text-secondary underline">topics</a></Link>.
         </p>
       </section>
-      <section className="my-4 md:my-6" id="posts">
+      <section className="my-4 lg:my-6" id="posts">
         <CardGroup posts={posts} />
         {
           posts.length >= 5

@@ -34,8 +34,16 @@ body {
   box-sizing: border-box;
 }
 
-.truncate-multiline {
+.truncate-multiline-2,
+.truncate-multiline-3 {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+.truncate-multiline-2 {
+  -webkit-line-clamp: 2;
+}
+
+.truncate-multiline-3 {
+  -webkit-line-clamp: 3;
 }

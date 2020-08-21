@@ -1,10 +1,11 @@
-import { Fragment } from 'react'
-import Document, { Head, Main, NextScript, DocumentContext } from 'next/document'
+import Document, {
+  Head, Main, NextScript, DocumentContext,
+} from 'next/document';
 
 export default class CustomDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps };
   }
 
   render() {
@@ -14,13 +15,14 @@ export default class CustomDocument extends Document {
       <html lang="en">
         <Head>
           {isProduction && (
-            <Fragment>
+            <>
               {/* Global Site Tag (gtag.js) - Google Analytics */}
               <script
                 async
                 src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`}
               />
               <script
+              /* eslint-disable react/no-danger */
                 dangerouslySetInnerHTML={{
                   __html: `
                     window.dataLayer = window.dataLayer || [];
@@ -33,7 +35,7 @@ export default class CustomDocument extends Document {
                   `,
                 }}
               />
-            </Fragment>
+            </>
           )}
         </Head>
         <body>
@@ -41,6 +43,6 @@ export default class CustomDocument extends Document {
           <NextScript />
         </body>
       </html>
-    )
+    );
   }
 }
