@@ -2,6 +2,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
+import { log } from 'console';
 import Layout, { siteTitle } from '../components/layout/layout';
 import CardGroup from '../components/card-group/card-group';
 import Cta from '../components/cta/cta';

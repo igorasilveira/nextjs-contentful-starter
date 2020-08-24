@@ -3,21 +3,31 @@ import html from 'remark-html';
 
 import { fetchAPI } from './contentful';
 
+export async function getPostBody(post: IPost) {
+  const processedContent = await remark()
+    .use(html)
+    .process(post.body);
+  const contentHtml = processedContent.toString();
+
+  return contentHtml;
+}
+
 export async function getPostsForHome() {
   const data: IContentfulData = await fetchAPI(
     `blogPostCollection(preview: $preview, limit: 5, order: [
       publishDate_DESC
     ]) {
       items {
-        title,
-        slug,
+        title
+        body
+        slug
         images
-        description,
-        publishDate,
+        description
+        publishDate
         topicsCollection {
           items {
-            title,
-            slug,
+            title
+            slug
             color
           }
         }
@@ -26,7 +36,11 @@ export async function getPostsForHome() {
   );
 
   const posts: IPost[] = data.blogPostCollection.items;
-  posts.forEach((post) => { post.heroImage = post.images.shift(); });
+  await posts.forEach(async (post) => {
+    post.heroImage = post.images.shift();
+    post.contentHtml = await getPostBody(post);
+  });
+
   return posts;
 }
 
@@ -94,12 +108,7 @@ export async function getPostData(slug: string) {
   const post: IPost = data.blogPostCollection.items.shift();
   post.heroImage = post.images.shift();
 
-  const processedContent = await remark()
-    .use(html)
-    .process(post.body);
-  const contentHtml = processedContent.toString();
-
-  post.contentHtml = contentHtml;
+  post.contentHtml = await getPostBody(post);
 
   return post;
 }

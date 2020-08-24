@@ -11,7 +11,7 @@ export default function NavBar() {
         `h-16 md:h-screen w-screen md:w-16 md:hover:w-full
          fixed bottom-0 md:left-0 shadow-2xl 
          flex flex-row md:flex-col items-center
-         z-10
+         z-20
          transition-all duration-500 ease
          md:hover:shadow-3xl
          group`,

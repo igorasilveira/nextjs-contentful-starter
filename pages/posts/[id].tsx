@@ -3,6 +3,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 
 import Head from 'next/head';
 
+import { useEffect, useState } from 'react';
 import Layout, { siteTitle } from '../../components/layout/layout';
 import Date from '../../components/date/date';
 import TopicGroup from '../../components/topic-group/topic-group';
@@ -10,8 +11,19 @@ import TopicGroup from '../../components/topic-group/topic-group';
 import postStyles from './post.module.css';
 
 import { getAllPostIds, getPostData } from '../../lib/posts';
+import { getScrollPercent } from '../../helpers/document';
+import ProgressBar from '../../components/progress-bar/progress-bar';
+import ReadTime from '../../components/read-time/read-time';
 
 export default function Post({ post }: { post: IPost }) {
+  const [scrollPercentage, setScrollPercentage] = useState(0);
+
+  useEffect(() => {
+    document.addEventListener('scroll', () => {
+      setScrollPercentage(getScrollPercent());
+    });
+  });
+
   return (
     <Layout>
       <Head>
@@ -29,10 +41,19 @@ export default function Post({ post }: { post: IPost }) {
         <script src="/js/prism.js" async />
       </Head>
       <article>
+        <div className={`
+          md:pb-4 mb-16 md:mb-0 z-10
+          fixed bottom-0 md:top-0 inset-x-0
+        `}
+        >
+          <ProgressBar value={scrollPercentage} />
+        </div>
         <TopicGroup topics={post.topicsCollection.items} isPill isLink />
         <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold mb-2">{post.title}</h1>
-        <div className="text-md md:text-lg text-gray-500 italic">
+        <div className="text-md md:text-lg text-gray-600">
           <Date dateString={post.publishDate} />
+          {' | '}
+          <ReadTime post={post} />
         </div>
         <img className="w-full h-48 md:h-56 lg:h-64 my-4 md:my-10 rounded-2lg object-cover shadow-lg" src={post.heroImage.secure_url} alt={post.heroImage.context?.custom.alt || post.title} />
         <div

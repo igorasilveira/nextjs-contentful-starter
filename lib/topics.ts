@@ -1,4 +1,5 @@
 import { fetchAPI } from './contentful';
+import { getPostBody } from './posts';
 
 export async function getAllTopicsIds() {
   const data: IContentfulData = await fetchAPI(
@@ -38,8 +39,8 @@ export async function getTopicData(slug: string): Promise<ITopicData> {
               images
               topicsCollection {
                 items {
-                  title,
-                  color,
+                  title
+                  color
                   slug
                 }
               }
@@ -53,7 +54,10 @@ export async function getTopicData(slug: string): Promise<ITopicData> {
 
   const topic: ITopic = topicsData.topicCollection.items.shift();
   const posts: IPost[] = topic.linkedFrom.blogPostCollection.items;
-  posts.forEach((post) => { post.heroImage = post.images.shift(); });
+  await posts.forEach(async (post) => {
+    post.heroImage = post.images.shift();
+    post.contentHtml = await getPostBody(post);
+  });
 
   posts.sort((a, b) => {
     if (a.publishDate < b.publishDate) {
