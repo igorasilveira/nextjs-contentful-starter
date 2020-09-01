@@ -40,7 +40,7 @@ export default function Topic({
       <section>
         <TopicComponent topic={topic} />
         {topic.description && (
-          <p className="mt-8 text-xl text-rich-black leading-normal rounded-md font-normal p-4 bg-gray-200">
+          <p className="mt-8 text-base md:text-xl text-rich-black leading-normal rounded-md font-normal p-2 md:p-4 bg-gray-200">
             {topic.description}
           </p>
         )}
