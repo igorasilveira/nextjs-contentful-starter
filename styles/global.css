@@ -11,10 +11,12 @@ html { font-family: 'Inter', -apple-system, BlinkMacSystemFont, Inter, Segoe UI,
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-@import "./convertKit.css";
 
 /* Custom */
 @import "./colors.css";
+
+/* Code */
+@import "/css/prism.css";
 
 html {
   background-color: var(--bg-color);
@@ -32,16 +34,16 @@ body {
   box-sizing: border-box;
 }
 
-a {
-  text-decoration: none;
-  @apply text-blue-500;
+.truncate-multiline-2,
+.truncate-multiline-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 
-a:hover {
-  text-decoration: underline;
+.truncate-multiline-2 {
+  -webkit-line-clamp: 2;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+.truncate-multiline-3 {
+  -webkit-line-clamp: 3;
 }

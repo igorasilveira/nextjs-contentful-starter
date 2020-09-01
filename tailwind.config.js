@@ -6,6 +6,23 @@ module.exports = {
         'regal-blue': {
           default: '#243c5a',
         },
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
+        'burnt-sienna': {
+          default: 'var(--burnt-sienna)',
+        },
+        'carolina-blue': {
+          default: 'var(--carolina-blue)',
+        },
+        'ghost-white': {
+          default: 'var(--ghost-white)',
+        },
+        'minion-yellow': {
+          default: 'var(--minion-yellow)',
+        },
+        'rich-black': {
+          default: 'var(--rich-black)',
+        },
       },
     },
     boxShadow: {
@@ -29,7 +46,12 @@ module.exports = {
       '2lg': '20px',
     },
   },
-  variants: {},
+  variants: {
+    display: ['responsive', 'hover', 'group-hover'],
+    textColor: ['responsive', 'hover', 'group-hover'],
+    opacity: ['responsive', 'hover', 'group-hover'],
+    scale: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+  },
   plugins: [],
   purge: [
     './pages/**/*.tsx',

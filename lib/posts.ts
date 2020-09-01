@@ -1,67 +1,121 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import remark from 'remark';
 import html from 'remark-html';
 
-const postsDirectory = path.join(process.cwd(), 'posts');
+import { fetchAPI } from './contentful';
 
-export function getSortedPostsData(): Post[] {
-  // Get file names under /posts
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
-    // Remove ".md" from file name to get id
-    const id = fileName.replace(/\.md$/, '');
+export async function getPostBody(post: IPost) {
+  const processedContent = await remark()
+    .use(html)
+    .process(post.body);
+  const contentHtml = processedContent.toString();
 
-    // Read markdown file as string
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-    // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents);
-
-    // Combine the data with the id
-    return {
-      id,
-      ...matterResult.data as Post,
-    };
-  });
-  // Sort posts by date
-  return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    }
-    return -1;
-  });
+  return contentHtml;
 }
 
-export function getAllPostIds() {
-  const fileNames = fs.readdirSync(postsDirectory);
+export async function getPostsForHome() {
+  const data: IContentfulData = await fetchAPI(
+    `blogPostCollection(preview: $preview, limit: 5, order: [
+      sys_publishedAt_DESC
+    ]) {
+      items {
+        title
+        body
+        slug
+        images
+        description
+        sys { 
+          publishedAt
+        }
+        topicsCollection {
+          items {
+            title
+            slug
+            color
+          }
+        }
+      }
+    }`,
+  );
 
-  return fileNames.map((fileName) => ({
+  const posts: IPost[] = data.blogPostCollection.items;
+  await posts.forEach(async (post) => {
+    post.heroImage = post.images.shift();
+    post.contentHtml = await getPostBody(post);
+  });
+
+  return posts;
+}
+
+export async function getAllPostIds() {
+  const data: IContentfulData = await fetchAPI(
+    `blogPostCollection(preview: $preview) {
+        items {
+          slug
+      },
+    }`,
+  );
+
+  const posts: IPost[] = data.blogPostCollection.items;
+
+  return posts.map(({ slug }) => ({
     params: {
-      id: fileName.replace(/\.md$/, ''),
+      id: slug,
     },
   }));
 }
 
-export async function getPostData(id: string): Promise<Post> {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+export async function getPostsForSitemap(): Promise<IPost[]> {
+  const data: IContentfulData = await fetchAPI(
+    `blogPostCollection(preview: $preview) {
+        items {
+          slug
+          sys { 
+            publishedAt
+          }
+      },
+    }`,
+  );
 
-  // Use gray-matter to parse the post metadata section
-  const matterResult = matter(fileContents);
+  const posts: IPost[] = data.blogPostCollection.items;
 
-  // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
-  const contentHtml = processedContent.toString();
+  return posts;
+}
 
-  // Combine the data with the id and contentHtml
-  return {
-    id,
-    contentHtml,
-    ...matterResult.data as Post,
-  };
+export async function getPostData(slug: string) {
+  const data: IContentfulData = await fetchAPI(
+    `blogPostCollection(preview: $preview, where: {
+        slug: "${slug}"
+      }) {
+        items {
+          title
+          slug
+          sys { 
+            publishedAt
+          }
+          images
+          body,
+          author {
+            name
+            image {
+              url
+            }
+          },
+          topicsCollection {
+            items {
+              title
+              slug
+              color
+            },
+          }
+      },
+    }`,
+  );
+
+  const post: IPost = data.blogPostCollection.items.shift();
+
+  post.heroImage = post.images.shift();
+
+  post.contentHtml = await getPostBody(post);
+
+  return post;
 }

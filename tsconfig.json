@@ -24,6 +24,6 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx", "pages/posts/[id].js", "pages/api/test.js"
+    "**/*.tsx", "pages/posts/[id].js", "pages/api/test.js", "lib/gtag.js"
   ]
 }

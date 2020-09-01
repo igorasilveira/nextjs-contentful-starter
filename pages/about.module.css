@@ -1,0 +1,12 @@
+.socialIcons > a:not(last-of-type) {
+    @apply mr-2;
+}
+
+.socialIcons > a > img {
+    filter: grayscale(100%) opacity(0.7);
+    transition: filter 500ms ease;
+}
+
+.socialIcons > a:hover > img {
+    filter: grayscale(0%) opacity(1);
+}
