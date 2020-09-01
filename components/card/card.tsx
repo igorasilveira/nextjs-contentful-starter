@@ -23,7 +23,7 @@ export default function Card({
               {' | '}
               <ReadTime post={post} />
             </div>
-            <p className="mt-4 text-sm md:text-base overflow-hidden leading-relaxed font-normal truncate-multiline-3">
+            <p className="mt-2 md:mt-4 text-sm md:text-base overflow-hidden leading-relaxed font-normal truncate-multiline-3">
               {post.description}
             </p>
           </div>
