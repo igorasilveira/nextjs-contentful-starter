@@ -1,10 +1,14 @@
 .postBody h2,
 .postBody h3 {
-    @apply font-bold mt-4 mb-2;
+    @apply font-bold my-2;
 }
 
 .postBody h1 {
     @apply text-3xl;
+}
+
+.postBody p {
+    @apply text-base my-4;
 }
 
 .postBody h2 {
@@ -17,6 +21,32 @@
 
 .postBody a {
     @apply text-carolina-blue underline;
+}
+
+.postBody ul {
+    counter-reset: item;
+
+    @apply list-inside list-decimal;
+}
+  
+.postBody ol > li,
+.postBody ul > li {
+    list-style-type: none;
+    counter-increment: item;
+}
+  
+.postBody  ol > li:before,
+.postBody  ul > li:before {
+    display: inline-block;
+    width: 1em;
+    padding-right: 1.5em;
+    font-weight: bold;
+    text-align: right;
+    content: counter(item) ".";
+}
+
+.postBody a:hover {
+    @apply cursor-pointer;
 }
 
 .postBody code,

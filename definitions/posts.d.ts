@@ -4,7 +4,8 @@ interface IPost {
   heroImage: ICloudinaryImage;
   images: ICloudinaryImage[];
   title: string;
-  publishDate: string;
+  sys: IContentfulSys;
+  publishedAt: string;
   description?: string;
   topicsCollection: ITopicsCollection;
   contentHtml: string;

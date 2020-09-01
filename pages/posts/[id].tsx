@@ -51,11 +51,14 @@ export default function Post({ post }: { post: IPost }) {
         <TopicGroup topics={post.topicsCollection.items} isPill isLink />
         <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold mb-2">{post.title}</h1>
         <div className="text-md md:text-lg text-gray-600">
-          <Date dateString={post.publishDate} />
+          <Date dateString={post.sys.publishedAt} />
           {' | '}
           <ReadTime post={post} />
         </div>
-        <img className="w-full h-48 md:h-56 lg:h-64 my-4 md:my-10 rounded-2lg object-cover shadow-lg" src={post.heroImage.secure_url} alt={post.heroImage.context?.custom.alt || post.title} />
+        <div className="my-4 md:my-10">
+          <img className="w-full h-48 md:h-56 lg:h-64 rounded-2lg object-cover shadow-lg" src={post.heroImage.secure_url} alt={post.heroImage.context?.custom.alt || post.title} />
+          <p className="text-center mt-3 italic text-gray-500">{post.heroImage.context.custom.caption}</p>
+        </div>
         <div
           className={postStyles.postBody}
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}

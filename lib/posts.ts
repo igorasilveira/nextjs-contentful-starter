@@ -15,7 +15,7 @@ export async function getPostBody(post: IPost) {
 export async function getPostsForHome() {
   const data: IContentfulData = await fetchAPI(
     `blogPostCollection(preview: $preview, limit: 5, order: [
-      publishDate_DESC
+      sys_publishedAt_DESC
     ]) {
       items {
         title
@@ -23,7 +23,9 @@ export async function getPostsForHome() {
         slug
         images
         description
-        publishDate
+        sys { 
+          publishedAt
+        }
         topicsCollection {
           items {
             title
@@ -67,7 +69,9 @@ export async function getPostsForSitemap(): Promise<IPost[]> {
     `blogPostCollection(preview: $preview) {
         items {
           slug
-          publishDate
+          sys { 
+            publishedAt
+          }
       },
     }`,
   );
@@ -85,7 +89,9 @@ export async function getPostData(slug: string) {
         items {
           title
           slug
-          publishDate
+          sys { 
+            publishedAt
+          }
           images
           body,
           author {
@@ -106,6 +112,7 @@ export async function getPostData(slug: string) {
   );
 
   const post: IPost = data.blogPostCollection.items.shift();
+
   post.heroImage = post.images.shift();
 
   post.contentHtml = await getPostBody(post);

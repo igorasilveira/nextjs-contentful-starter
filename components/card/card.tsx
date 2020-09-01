@@ -19,11 +19,11 @@ export default function Card({
           <div className="px-2 pt-2 pb-2">
             <div className="font-semibold text-xl md:text-2xl mb-2 leading-tight truncate-multiline-3">{post.title}</div>
             <div className="font-normal text-sm md:text-base mb-2 text-gray-600">
-              <Date dateString={post.publishDate} />
+              <Date dateString={post.sys.publishedAt} />
               {' | '}
               <ReadTime post={post} />
             </div>
-            <p className="text-sm md:text-base overflow-hidden leading-normal font-medium truncate-multiline-3">
+            <p className="mt-4 text-sm md:text-base overflow-hidden leading-relaxed font-normal truncate-multiline-3">
               {post.description}
             </p>
           </div>

@@ -28,6 +28,7 @@ export async function getTopicData(slug: string): Promise<ITopicData> {
         slug
         title
         color
+        description
         linkedFrom {
           blogPostCollection(limit: 5) {
             items {
@@ -35,7 +36,9 @@ export async function getTopicData(slug: string): Promise<ITopicData> {
               body
               slug
               description
-              publishDate
+              sys  {
+                publishedAt
+              }
               images
               topicsCollection {
                 items {
@@ -60,7 +63,7 @@ export async function getTopicData(slug: string): Promise<ITopicData> {
   });
 
   posts.sort((a, b) => {
-    if (a.publishDate < b.publishDate) {
+    if (a.sys.publishedAt < b.sys.publishedAt) {
       return 1;
     }
     return -1;
@@ -88,7 +91,8 @@ export async function getAllTopics() {
     }`,
   );
 
-  const topics: ITopic[] = data.topicCollection.items;
+  const topics: ITopic[] = data.topicCollection.items
+    .filter((topic) => topic.linkedFrom.blogPostCollection.total > 0);
 
   return topics;
 }
@@ -105,7 +109,8 @@ export async function getTopicsForSitemap(): Promise<ITopic[]> {
     }`,
   );
 
-  const topics: ITopic[] = data.topicCollection.items;
+  const topics: ITopic[] = data.topicCollection.items
+    .filter((topic) => topic.linkedFrom.blogPostCollection.total > 0);
 
   return topics;
 }

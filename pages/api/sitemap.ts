@@ -9,7 +9,7 @@ async function addPostData(smStream: SitemapStream) {
   posts.forEach((post) => {
     smStream.write({
       url: `/posts/${post.slug}`,
-      lastmod: post.publishDate,
+      lastmod: post.sys.publishedAt,
     });
   });
 }
