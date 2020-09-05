@@ -30,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   });
 
   smStream.write({
-    url: '',
+    url: '/',
   });
   smStream.write({
     url: '/topics',
