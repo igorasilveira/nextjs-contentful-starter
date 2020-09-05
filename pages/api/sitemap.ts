@@ -26,7 +26,8 @@ async function addTopicData(smStream: SitemapStream) {
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const smStream = new SitemapStream({
-    hostname: process.env.VERCEL_URL || 'http://localhost:3000',
+    hostname: (process.env.VERCEL_URL && `https://${process.env.VERCEL_URL}`)
+      || 'http://localhost:3000',
   });
 
   smStream.write({
