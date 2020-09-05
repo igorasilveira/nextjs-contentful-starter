@@ -105,6 +105,11 @@ export async function getTopicsForSitemap(): Promise<ITopic[]> {
           sys {
             publishedAt
           }
+          linkedFrom {
+            blogPostCollection {
+              total
+            }
+          }
       },
     }`,
   );
