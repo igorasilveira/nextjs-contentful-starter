@@ -30,8 +30,9 @@ export default function Post({ post }: { post: IPost }) {
         <title>{post.title}</title>
         <meta
           name="description"
-          content={post.title}
+          content={post.description}
         />
+        <meta name="og:description" property="og:description" content={post.description} />
         <meta
           property="og:image"
           content={post.heroImage.url}
